@@ -39,7 +39,7 @@ if (GetVars('type', 'GET') == 'test') {
 
     exit();
 }
-require $blogpath . 'zb_system/admin/admin_header.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
 ?>
 <style type="text/css">
 .text-config {
@@ -47,7 +47,7 @@ require $blogpath . 'zb_system/admin/admin_header.php';
 }
 </style>
 <?php
-require $blogpath . 'zb_system/admin/admin_top.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
 
 ?>
 
@@ -95,7 +95,7 @@ $(document).ready(function(e) {
 </div>
 </div>
 <?php
-require $blogpath . 'zb_system/admin/admin_footer.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
 
 RunTime();
 ?>

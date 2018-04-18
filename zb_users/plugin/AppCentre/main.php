@@ -29,8 +29,8 @@ if (count($_POST) > 0) {
 
 Add_Filter_Plugin('Filter_Plugin_CSP_Backend', 'AppCentre_UpdateCSP');
 
-require $blogpath . 'zb_system/admin/admin_header.php';
-require $blogpath . 'zb_system/admin/admin_top.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
 
 ?>
 <div id="divMain">
@@ -57,7 +57,7 @@ Server_Open($method);
   </div>
 </div>
 <?php
-require $blogpath . 'zb_system/admin/admin_footer.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
 
 RunTime();
 ?>

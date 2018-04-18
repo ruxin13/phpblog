@@ -104,8 +104,8 @@ switch ($action) {
         break;
 }
 
-require ZBP_PATH . 'zb_system/admin/admin_header.php';
-require ZBP_PATH . 'zb_system/admin/admin_top.php';
+require ZBP_PATH . 'zb_system/xiaoyezi/admin_header.php';
+require ZBP_PATH . 'zb_system/xiaoyezi/admin_top.php';
 
 ?>
 <div id="divMain">
@@ -114,7 +114,7 @@ $admin_function();
 ?>
 </div>
 <?php
-require ZBP_PATH . 'zb_system/admin/admin_footer.php';
+require ZBP_PATH . 'zb_system/xiaoyezi/admin_footer.php';
 
 foreach ($GLOBALS['hooks']['Filter_Plugin_Admin_End'] as $fpname => &$fpsignal) {$fpname();}
 

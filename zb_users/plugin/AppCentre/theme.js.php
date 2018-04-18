@@ -26,7 +26,7 @@ $(".theme").each(function(){
 	}
 
 	if($(this).hasClass("theme-now")){
-		s=s+"<a class=\"button\" href='"+bloghost+"zb_system/admin/module_edit.php?source=theme' title='给该主题增加侧栏模块'><img height='16' width='16' src='"+bloghost+"zb_users/plugin/AppCentre/images/bricks.png'/></a>&nbsp;&nbsp;&nbsp;&nbsp;";
+		s=s+"<a class=\"button\" href='"+bloghost+"zb_system/xiaoyezi/module_edit.php?source=theme' title='给该主题增加侧栏模块'><img height='16' width='16' src='"+bloghost+"zb_users/plugin/AppCentre/images/bricks.png'/></a>&nbsp;&nbsp;&nbsp;&nbsp;";
 	}
 
 

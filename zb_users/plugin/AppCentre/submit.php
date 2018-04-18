@@ -45,8 +45,8 @@ if (!$s) {
     $s = '{"id":"未提交","author":"未提交","modified":"未提交"}';
 }
 
-require $blogpath . 'zb_system/admin/admin_header.php';
-require $blogpath . 'zb_system/admin/admin_top.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
 
 ?>
 <div id="divMain">
@@ -99,7 +99,7 @@ $("#zblog_app_date").val(jsoninfo.modified);
 
 
 <?php
-require $blogpath . 'zb_system/admin/admin_footer.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
 
 RunTime();
 ?>

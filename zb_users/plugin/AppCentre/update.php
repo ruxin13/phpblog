@@ -119,8 +119,8 @@ if (GetVars('check', 'GET') == 'now') {
 	$checkbegin = true;
 }
 
-require $blogpath . 'zb_system/admin/admin_header.php';
-require $blogpath . 'zb_system/admin/admin_top.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
 
 $newversion = AppCentre_GetHttpContent(APPCENTRE_SYSTEM_UPDATE . ($zbp->Config('AppCentre')->checkbeta == true ? '?beta' : ''));
 ?>
@@ -255,7 +255,7 @@ function restore(f,id){
 
 
 <?php
-require $blogpath . 'zb_system/admin/admin_footer.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
 
 RunTime();
 ?>

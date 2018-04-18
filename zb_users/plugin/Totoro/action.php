@@ -25,7 +25,7 @@ if (function_exists($functionName)) {
     $zbp->ShowError(5, __FILE__, __LINE__);
 }
 $zbp->SetHint('good');
-Redirect('../../../zb_system/admin/index.php?act=CommentMng');
+Redirect('../../../zb_system/xiaoyezi/index.php?act=CommentMng');
 
 function Totoro_Action_Blockip()
 {

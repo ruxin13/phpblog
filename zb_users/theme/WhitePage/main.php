@@ -22,8 +22,8 @@ if(count($_POST) > 0){
 	Redirect($_SERVER["HTTP_REFERER"]);
 }
 
-require $blogpath . 'zb_system/admin/admin_header.php';
-require $blogpath . 'zb_system/admin/admin_top.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
 
 $percolors = array("ffffff", "ffa07a", "8fbc8b", "a9a9a9", "6699ff", "ee82ee", "9370db", "ff7f50", "deb887", "ffe4c4", "7fffd4", "ffc0cb", "bdb76b", "d3d3d3", "eee8aa", "98fb98", "ffb6c1", "eeeeee", "add8e6", "e9967a");
 ?>
@@ -161,6 +161,6 @@ $('.color-box').click(function() {
 </script> 
 
 <?php
-require $blogpath . 'zb_system/admin/admin_footer.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
 RunTime();
 ?>

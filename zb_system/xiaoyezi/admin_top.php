@@ -12,6 +12,6 @@
       </ul>
     </div>
 </header>
-<?php require ZBP_PATH . 'zb_system/admin/admin_left.php';?>
+<?php require ZBP_PATH . 'zb_system/xiaoyezi/admin_left.php';?>
 <section class="main">
 <?php $zbp->GetHint();?>

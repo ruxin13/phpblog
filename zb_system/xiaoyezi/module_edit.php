@@ -21,8 +21,8 @@ if (!$zbp->CheckRights($action)) {
 $blogtitle = $lang['msg']['module_edit'];
 
 
-require ZBP_PATH . 'zb_system/admin/admin_header.php';
-require ZBP_PATH . 'zb_system/admin/admin_top.php';
+require ZBP_PATH . 'zb_system/xiaoyezi/admin_header.php';
+require ZBP_PATH . 'zb_system/xiaoyezi/admin_top.php';
 
 ?>
 <?php
@@ -203,6 +203,6 @@ function checkInfo(){
 </div>
 
 <?php
-require ZBP_PATH . 'zb_system/admin/admin_footer.php';
+require ZBP_PATH . 'zb_system/xiaoyezi/admin_footer.php';
 
 RunTime();

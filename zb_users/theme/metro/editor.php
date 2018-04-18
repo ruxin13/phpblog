@@ -21,7 +21,7 @@ if ($zbp->Config('metro')->HasKey('version')) {
 $a = array("", "左", "中", "右");
 $r = "?" . rand();
 
-require $blogpath . 'zb_system/admin/admin_header.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
 ?>
 <link href="source/evol.colorpicker.css" rel="stylesheet" />
 <script src="source/evol.colorpicker.min.js" type="text/javascript"></script>
@@ -44,7 +44,7 @@ table .button{padding: 2px 12px 5px 12px; margin: 0.25em 0;}
 .imageshow{margin:0.25em 0;}.imageshow img{margin:0 10px;margin-bottom:-10px;}
 </style>
 <?php
-require $blogpath . 'zb_system/admin/admin_top.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
 ?>
 <div id="divMain">
 	<div class="divHeader">
@@ -187,6 +187,6 @@ require $blogpath . 'zb_system/admin/admin_top.php';
 </div>
 <script type="text/javascript">ActiveTopMenu("topmenu_metro");</script>
 <?php
-require $blogpath . 'zb_system/admin/admin_footer.php';
+require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
 RunTime();
 ?>
