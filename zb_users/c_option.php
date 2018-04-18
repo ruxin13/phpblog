@@ -11,7 +11,7 @@ return array (
   'ZC_MYSQL_CHARSET' => 'utf8',
   'ZC_MYSQL_PRE' => 'zbp_',
   'ZC_MYSQL_ENGINE' => 'MyISAM',
-  'ZC_MYSQL_PORT' => '3306',
+  'ZC_MYSQL_PORT' => '39888',
   'ZC_MYSQL_PERSISTENT' => false,
   'ZC_PGSQL_SERVER' => 'localhost',
   'ZC_PGSQL_USERNAME' => 'postgres',
