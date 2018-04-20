@@ -46,7 +46,7 @@ pre[class*="language-"]{padding:1em;margin:.5em 0;overflow:auto;}
 .prism-token.prism-string,
 .prism-token.prism-char,
 .prism-token.prism-builtin,
-.prism-token.prism-inserted{color:#690;}
+.prism-token.prism-inserted{color:#e6db74;}
 .prism-token.prism-operator,
 .prism-token.prism-entity,
 .prism-token.prism-url,

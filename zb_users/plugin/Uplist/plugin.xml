@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin version="php">
-<id>CloudStorage</id>
-<name>云存储</name>
-<url>http://app.rainbowsoft.org/?auth=4</url>
-<note>使用云空间存储博客附件，支持阿里云、百度云、七牛云</note>
-<description>使用云空间存储博客附件，支持阿里云、百度云、七牛云</description>
+<id>Uplist</id>
+<name>图式附件管理</name>
+<url>http://www.yiwuku.com/</url>
+<note>以图片列表形式可视化操作后台附件管理</note>
+<description>改变枯燥文字表格方式，精简参数并自动换算大小单位，尽可能高效方便的操作附件管理</description>
 <path>main.php</path>
 <include>include.php</include>
 <level>1</level>
 <author>
-  <name>未寒</name>
-  <email>im@imzhou.com</email>
-  <url>http://imzhou.com/</url>
+  <name>尔今</name>
+  <email>erx@qq.com</email>
+  <url>http://www.yiwuku.com/</url>
 </author>
 <source>
   <name></name>
   <email></email>
   <url></url>
 </source>
-<adapted>140220</adapted>
-<version>1.0.1</version>
-<pubdate>2014-02-19</pubdate>
-<modified>2014-07-09</modified>
+<adapted>151603</adapted>
+<version>1.1</version>
+<pubdate>2017-11-25</pubdate>
+<modified>2018-01-23</modified>
 <price>0</price>
 <advanced>
   <dependency></dependency>
