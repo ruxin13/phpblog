@@ -1,6 +1,5 @@
 <div id="footer">
   <div class="copyright">
-    <p>Powered By {$zblogphphtml}</p>
     <p>{$copyright}</p>
   </div>
   <div id="goTopBtn">

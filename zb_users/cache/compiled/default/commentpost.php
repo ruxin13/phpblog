@@ -5,11 +5,11 @@
 	<input type="hidden" name="inpId" id="inpId" value="<?php  echo $article->ID;  ?>" />
 	<input type="hidden" name="inpRevID" id="inpRevID" value="0" />
 <?php if ($user->ID>0) { ?>
-	<input type="hidden" name="inpName" id="inpName" value="<?php  echo $user->Name;  ?>" />
+	<input type="hidden" name="inpName" id="inpName" value="<?php  echo $user->StaticName;  ?>" />
 	<input type="hidden" name="inpEmail" id="inpEmail" value="<?php  echo $user->Email;  ?>" />
 	<input type="hidden" name="inpHomePage" id="inpHomePage" value="<?php  echo $user->HomePage;  ?>" />
 <?php }else{  ?>
-	<p><input type="text" name="inpName" id="inpName" class="text" value="<?php  echo $user->Name;  ?>" size="28" tabindex="1" /> <label for="inpName"><?php  echo $lang['msg']['name'];  ?>(*)</label></p>
+	<p><input type="text" name="inpName" id="inpName" class="text" value="<?php  echo $user->StaticName;  ?>" size="28" tabindex="1" /> <label for="inpName"><?php  echo $lang['msg']['name'];  ?>(*)</label></p>
 	<p><input type="text" name="inpEmail" id="inpEmail" class="text" value="<?php  echo $user->Email;  ?>" size="28" tabindex="2" /> <label for="inpEmail"><?php  echo $lang['msg']['email'];  ?></label></p>
 	<p><input type="text" name="inpHomePage" id="inpHomePage" class="text" value="<?php  echo $user->HomePage;  ?>" size="28" tabindex="3" /> <label for="inpHomePage"><?php  echo $lang['msg']['homepage'];  ?></label></p>
 <?php if ($option['ZC_COMMENT_VERIFY_ENABLE']) { ?>
