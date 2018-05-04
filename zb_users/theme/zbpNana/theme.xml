@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<theme version="php">
+<id>zbpNana</id>
+<name>博客CMS图片布局三合一主题</name>
+<url>https://www.yigujin.cn/zbpnana/</url>
+<note>博客CMS图片布局三合一主题</note>
+<description>zbpNana主题是根据本人的WP响应式主题Nana编译而来，集成博客、CMS和图片三大布局，常规13种颜色和自选颜色实现一键切换站点颜色风格。</description>
+<path>main.php</path>
+<include>include.php</include>
+<level>1</level>
+<author>
+  <name>懿古今</name>
+  <email>yigujin@qq.com</email>
+  <url>https://www.yigujin.cn/</url>
+</author>
+<source>
+  <name></name>
+  <email></email>
+  <url></url>
+</source>
+<adapted>151740</adapted>
+<version>2.4</version>
+<pubdate>2017-05-02</pubdate>
+<modified>2018-03-13</modified>
+<price>0</price>
+<phpver>5.2</phpver>
+<advanced>
+  <dependency></dependency>
+  <rewritefunctions></rewritefunctions>
+  <existsfunctions></existsfunctions>
+  <conflict></conflict>
+</advanced>
+<sidebars>
+  <sidebar1></sidebar1>
+  <sidebar2></sidebar2>
+  <sidebar3></sidebar3>
+  <sidebar4></sidebar4>
+  <sidebar5></sidebar5>
+</sidebars>
+</theme>

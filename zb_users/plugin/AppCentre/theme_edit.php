@@ -19,23 +19,23 @@ $blogtitle = '应用中心-主题编辑';
 if (GetVars('id')) {
 	$app = $zbp->LoadApp('theme', GetVars('id'));
 	$mt = array();
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/', 'php|inc|png');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/', 'php|inc|png|webp');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/include/', 'php|inc|png');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/include/', 'php|inc|png|webp');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/style/', 'php|inc|png');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/style/', 'php|inc|png|webp');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/template/', 'php|inc|png');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/template/', 'php|inc|png|webp');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/source/', 'php|inc|png');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/source/', 'php|inc|png|webp');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}

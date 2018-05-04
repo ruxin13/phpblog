@@ -10,7 +10,7 @@ function LazyLoad_Main(&$template){
 	global $zbp;
   $article = $template->GetTags('article');
   $placeIMG = $zbp->host . 'zb_users/plugin/LazyLoad/img/grey.gif';
-  $article->Content = preg_replace("/(<img[^>]+src=)[\"']?([^\"']+\.(gif|jpg|jpeg|png))/", "$1\"{$placeIMG}\" data-original=\"$2", $article->Content); 
+  $article->Content = preg_replace("/(<img[^>]+src=)[\"']?([^\"']+\.(gif|jpg|jpeg|png|webp))/", "$1\"{$placeIMG}\" data-original=\"$2", $article->Content);
 	$zbp->footer .= "<script type=\"text/javascript\" src=\"{$zbp->host}zb_users/plugin/LazyLoad/js/lazyload.min.js\"></script>\r\n";
 	$zbp->footer .= "<script type=\"text/javascript\">
 	$(function() {

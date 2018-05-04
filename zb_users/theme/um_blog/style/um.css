@@ -1,0 +1,276 @@
+/**
+ +------------------------------------------------------------------------------
+ * 网站样式重写
+ +------------------------------------------------------------------------------
+ */
+ html{-webkit-text-size-adjust:none; /*解决chrome浏览器下字体不能小于12px*/}
+ body{ color:#333; font-family:Verdana, Arial, Helvetica, sans-serif;}
+ * {box-sizing: border-box;}
+
+html{zoom:1;}html *{outline:0;zoom:1;} html button::-moz-focus-inner{border-color:transparent!important;} 
+body{overflow-x: hidden; font-size:14px;} 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;} table{/*border-collapse:collapse;border-spacing:0;*/} fieldset,a img{border:0;} address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;} li{list-style:none;} caption,th{text-align:left;} h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;} q:before,q:after{content:'';}
+input[type="submit"], input[type="reset"], input[type="button"], button { -webkit-appearance: none; /*去掉苹果的默认UI来渲染按钮*/} em,i{ font-style:normal;}
+.input:after{ clear: both;content: ""; display: block; height: 0;visibility: hidden;}
+em,i{ font-style:normal;}
+a{margin:0;padding:0;background:0 0;color:#333;vertical-align:baseline;text-decoration:none;outline:none; }
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {color:#008ad5;text-decoration:none;}
+a:active {text-decoration: none;}
+a:focus,input:focus{outline:none;}
+
+.clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden; }.clearfix {display:block;}.clear{ clear:both;}/* 清除浮动*/
+.colwrapper { overflow:hidden; zoom:1 /*for ie*/; margin:5px auto; }/* 高度自适应 */ 
+.strong{ font-weight: bold;} .fl{ float: left;} .fr{ float: right;} .center{ margin:0 auto; text-align:center;}
+.show{ display:block; visibility:visible;}.hide{ display: none; visibility:hidden;}
+.block{ display:block;} .inline{ display:inline;}
+.op{filter:alpha(opacity=50); -moz-opacity:0.5;/** Firefox 3.5即将原生支持opacity属性，所以本条属性只在Firefox3以下版本有效 ***/ -khtml-opacity: 0.5; opacity: 0.5; } 
+.break{ word-wrap:break-word;overflow:hidden; /*word-break:break-all;*/}
+.tl{ text-align:left} .tr{ text-align:right;}
+
+/*文字两侧对齐*/
+.justify {text-align:justify;text-justify:distribute-all-lines;/*ie6-8*/text-align-last:justify;/* ie9*/-moz-text-align-last:justify;/*ff*/-webkit-text-align-last:justify;/*chrome 20+*/}
+
+/*超出省略号*/
+.tn{word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+body{ background: #eaeaea; padding-top: 89px;}
+a {color: #333;outline: medium none;}
+
+.container:before, .container:after,.warp:after,.main:before, .main:after{display: table; content: " ";}
+.container{ max-width:1200px; margin:0 auto; padding:0 0px; position:relative; clear:both;}
+
+
+
+.container{ max-width: 1170px; padding: 0 15px; margin: 0 auto;}
+.orw{ margin-left: -15px; margin-right: -15px;}
+
+/*logo*/
+.logo a{ color: #333; max-height: 40px; line-height: 40px; display: block; font-size: 0; margin: 14px 0;transition: all 0.3s ease 0s;}
+.logo a img{max-height: 40px;vertical-align: middle;}
+
+.header{ width: 100%; z-index: 999; position: fixed;background: #fff;box-shadow: 0 0 10px rgba(0, 0, 0, 0); border-bottom: 1px solid #ebebeb;top: 0;}
+.header .container{ padding:0 12px;}
+.navBar .nav { height: 68px; transition: all 0.3s ease 0s;}
+.navBar .nav li{float: left;font-size: 14px; height:68px;line-height: 68px;position: relative;transition: all 0.3s ease 0s; position:relative;}
+
+.navBar .nav li a{ display: block; padding: 0 25px; font-size: 14px;}
+.navBar .nav li a:before{width: 0; height: 1px; position: absolute; bottom: -1px; left: 50%; background: #ff6; content: ''; transition: all .6s; z-index: -1;}
+.navBar .nav li a.active:before,.navBar .nav li a.active:before{width: 100%; left: 0;}
+
+.navBar .nav li>ul{ display:none; position:absolute; top:88px; left:0;min-width:100%;transition: all 0.3s ease 0s;}
+.navBar .nav li>ul li{min-width:100%;height:42px; display:block; text-align:center;}
+.navBar .nav li>ul li a{ color:#333; min-width:100%; padding:0;background:#fff;height:42px;line-height:42px;}
+.navBar .nav li>ul li a:hover{ background:#69C; color:#fff;}
+.navBar .nav li:hover>ul{ display:block; top:68px;}
+
+#mnav,.nav-btn{ display:none}
+
+
+#article{ width: 66.6667%; min-height:300px; float: left; padding: 0 10px;}
+#article .post{ width: 100%; float: left; background: #fff; margin-bottom: 20px;padding:30px;}
+.post .post-head {text-align: center;}
+.post .post-head .post-title {margin: 0;font-size: 2.0em;line-height: 1.2em;}
+.post .post-head .post-title a {color: #303030;}
+.post .post-head .post-title a:hover,
+.post .post-head .post-title a:focus {text-decoration: none;}
+.post .post-head .post-meta {color: #959595;margin: 14px 0 0px;}
+.post .post-head .post-meta span {margin: 0px 7px;white-space: nowrap;}
+.post .post-head .post-meta span a{ color: #f66;}
+.post .post-head .post-meta span em{ margin:0 3px;}
+
+.post .post-media {margin-top: 30px;overflow: hidden; position:relative;}
+.post .post-media img {width: 100%;}
+.post .post-media b{ position:absolute; top:5px; left:5px; background:#f30; color:#fff; padding:3px 5px; font-weight:100; border-radius:3px;}
+
+.post .post-link{ clear: both; display: block; margin-bottom: 10px;}
+
+
+.post-content { font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif; color: #333;}
+.post-content p{ margin-bottom: 15px}
+.post .post-content{ margin: 20px 0; text-align: justify;}
+
+
+
+
+
+/*------------------------------侧边栏定义---------------------------*/
+.sidebar{ width: 33.3333%; float: left;padding: 0 10px;}
+.sidebar .function{background: #ffffff none repeat scroll 0 0;padding:15px 30px; margin-bottom: 20px;}
+.function{float:left;width:100%;margin:0 0 15px 0;padding:0;text-align:left; background:#fff; border:1px solid #ededed}
+.function .function_t{font-size:1.15em;height:38px;line-height:32px;margin:0 0 2px 0;border-bottom:1px solid #ededed; position:relative}
+.function .function_t:after { content: ""; width: 65px; height: 1px; background: #f66; position: absolute; left: 0; bottom: -1px;}
+
+.function ul{text-align:left;margin:0;padding:10px 0;border-top:1px solid #FFF;list-style-position:outside;list-style-type:none}
+.function li{font-size:1em;margin:10px 0;padding:0;width:auto}
+.function .function_c{padding:0}
+.function .function_c div{padding:.5em 0 .6em 0em;line-height:1.5em;}
+.function .previous-one-img{ font-size:0; display:inline-block; margin:0 0 0 1em}
+.function .function_c div .info{ color:#999;}
+
+/*------------------------------网站目录定义---------------------------*/
+#divMisc li{padding-left:0;background:0 0}
+#divCatalog li span.feed-icon{display:none}
+#divCatalog li.li-subcate{margin:0 0 0 1em}
+#divSearchPanel .function_c div{ position:relative; padding-right:50px;}
+#divSearchPanel input[type=text]{border:1px solid #ededed;height:28px;line-height:28px;width:100%; padding:0 5px;}
+#divSearchPanel input[type=submit]{border:1px solid #f66;height:28px;line-height:28px;width:50px;margin-left:0;background:#f66; color:#fff; position:absolute; top:7px; right:0;}
+#divTags.function li { display:inline-block; margin:0; float:left}
+#divTags.function a {border: 1px solid #ebebeb; padding: 2px 7px; color: #959595; line-height: 1.5em; display: inline-block; margin: 0 7px 7px 0;-webkit-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease;}
+#divTags.function a:hover { color: #ffffff; background: #f66;border: 1px solid #f66; text-decoration: none;}
+#divComments.function li{ width:100%; height:28px; line-height:28px; margin:0; overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+
+.sidebar .function img{ max-width:100%; background:#69C}
+.function a{color:#333}
+.function a:hover{color:#f66;}
+
+
+
+.btn {padding: 7px 14px;border-radius: 2px;}
+.btn1 {border: 1px solid #f66;background: #f66;color: #ffffff;-webkit-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+.btn1:hover {border: 1px solid #303030; background: #303030;color: #ffffff;}
+.btn1:focus {outline: none;}
+
+
+/*---------------------------文章内容------------------------*/
+
+
+div.post .post-title{margin:0;padding:0 0 15px 0;font-size:1.4em;line-height:1.4em;color:#284259;text-align:center;background:#FFF;width:100%;float:left}
+div.istop-post .post-title{text-align:center;border-bottom:none;margin:0;padding-bottom:0}
+div.post .post-date{height:1em;line-height:1em;margin:0;padding:10px 0 0 0;font-size:.9em;font-weight:400;text-align:right;width:22%;float:right;color:#666}
+div.post .post-footer{width:100%;margin:30px 0 20px 0;padding:0 0 5px 0;font-size:.9em;font-weight:400;color:#aaa;text-align:right}
+div.post .post-tags{width:100%;margin:0;padding:2px 0 0 0;font-size:1em;font-weight:400;color:gray;height:20px;text-align:left;text-indent:0}
+div.post .post-tags a{ margin-right:10px;}
+div.post div.post-body{width:100%;margin:0 0 15px 0;padding:8px 0 0 0;font-size:1em;text-align:justify;line-height:180%;clear:both;border-top:1px solid #ededed;word-break:break-all}
+div.post-body a{text-decoration:none}
+div.post-body p{margin:10px 0 15px 0;padding:0;text-indent:0}
+div.post.single .post-title{ width:78%; text-align:left;}
+
+/*----------文章中引用code------*/
+
+div.post-body div.syntaxhighlighter{margin:.5em 1em .5em 2em!important;width:auto!important}
+div.post-body li p{overflow:visible;text-indent:0;margin:3px 0}
+div.post-body ol,div.post-body ul{margin-left:3.5em}
+div.post-body code{width:93%;padding:5px;background:#f8f8f8;border:1px #F4F4F4 solid}
+div.post-body blockquote{width:93%;background:#F4F4F4;border-left:10px solid #ececec;margin:15px 5px;padding:5px}
+div.post-body img{max-width:100%;height:auto}
+div.post-body table{border-collapse:collapse;background:#fff;line-height:140%}
+div.post-body td,th{margin:0;padding:3px;text-indent:.25em}
+div.post-body h1{color:#000;margin:0;padding:0;font-size:1.2em}
+div.post-body h2{color:#000;margin:0;padding:0;font-size:1.1em}
+div.post-body h3{color:#000;margin:0;padding:0;font-size:1em}
+div.post-body h4{color:#000;margin:0;padding:0;font-size:1em}
+div.post-body h5{color:#000;margin:0;padding:0;font-size:.9em}
+div.post-body h6{color:#000;margin:0;padding:0;font-size:.8em}
+
+
+
+/*---------------------------版权-----------------------------*/
+
+#BlogPowerBy{font-size:.9em;height:25px;margin:0;padding:0;text-align:center;font-weight:400}
+#BlogCopyRight{font-size:.9em;height:20px;margin:0;padding:0;text-align:center;font-weight:400}
+#BlogCopyRight a,#BlogPowerBy a{color:#666}
+#BlogCopyRight a:hover,#BlogPowerBy a:hover{color:#f66}
+
+
+
+/*---------------------------文章和评论翻页条------------------------*/
+a.l{text-align:left;float:left;}
+a.r{text-align:right;float:right;}
+
+
+/*---------------------------引用\评论----------------------------------*/
+ul.msg{width:100%;margin:0;padding:10px 0% 10px 0%;text-align:left;list-style-position:outside;table-layout:fixed;word-wrap:break-word; background:#fff;}
+li.msgname{padding:0 0 10px 5px;margin:0;font-weight:700;font-size:1em}
+li.msgname small{ font-weight:normal;}
+li.msgurl{text-align:right;padding:2px 10px 2px 10px;margin:0;font-size:1em}
+li.msggravatar{display:block;float:left;margin-right:5px}
+li.msgarticle{list-style-position:outside;padding:10px;margin:0;line-height:160%;background:#FFF;padding-left:60px;border-bottom:1px solid #ededed}
+li.msgtime{padding:5px 0 0 0;font-weight:400;font-size:.8em}
+img.avatar{width:40px;height:40px;float:left;padding:4px;border:1px solid #ededed;margin-right:5px;}
+ul.msg ul.msg{padding:10px 0 0 0;margin:20px 0 0 0;border-top:1px solid #ededed;border-bottom:none}
+ul.msg ul.msg li.msgarticle{padding-bottom:0;border-bottom:0 solid #ededed}
+ul.msg ul.msg li.msgname{padding:0}
+
+
+/*---------------------------相关文章----------------------------------*/
+ul.msghead,ul.mutuality,ul.pagebar{border:none}
+ul.msghead li.tbname,ul.mutuality li.tbname{padding-bottom:10px;border-bottom:1px solid #dbe0e6}
+ul.mutuality li.msgarticle{padding-left:0;border:none}
+
+
+/*-------------------留言回复------------------------------*/
+li.msgarticle div.quote{margin:10px 0 0 0;padding:10px;background:#FFF;border:1px #F4F4F4 solid}
+li.msgarticle div.quote-title{margin:0;padding:0;font-size:1em;color:red}
+
+
+/************评论发表用的样式*************/
+#divCommentPost{width:100%;margin:0;padding:20px 2.5% 20px}
+#divCommentPost p{margin-top:10px; position:relative; width:100%;}
+#divCommentPost label{margin-top:5px}
+#divCommentPost p.posttop{color:#3c6da7}
+#divCommentPost img{margin-bottom:-.5em;}
+#cancel-reply{float:right;margin-right:2em}
+div.reply-frm{background:#f0f0f0;box-shadow:0 0 15px #ccc;margin:1em 1%!important;padding:.3em .8em!important;min-width:330px}
+input.text{border:1px solid #d7d7d7;line-height:26px;height:28px;padding:2px 5px 2px 5px}
+#txaArticle{padding:5px;width:100%;height:150px;border:1px solid #ededed}
+input.button{color:#FFF;font-size:14px;width:100px;height:32px;background:#09f;border:1px solid #09f;cursor:pointer}
+.cmBox{width:100%;margin:0;padding:20px 2.5% 20px;border:0px #ededed solid; background:#fff; margin-bottom:15px;border-top:none;padding-top:0; float:left}
+.cmBox.t{ border-bottom:none;border-top:1px #ededed solid; margin-bottom:0; padding-bottom:0;padding-top:20px;}
+
+
+
+/*--------------------------分页条-------------------------------*/
+span.page{color:#666;font-weight:100;padding:2px 0px;margin-right:4px;border:1px solid #ededed; background:#fff; min-width:25px; text-align:center; display:inline-block;}
+span.now-page{font-weight:100;padding:2px 0px;margin-right:4px;border:1px solid #69c; background:#69c; color:#fff;}
+a:hover span.page{color:#fff;border:1px solid #69c;background:#69c;}
+ul.ul-subcates{padding:8px 0 0 0;margin-bottom:-8px}
+span.sh{border:1px solid #CCC;padding:0 3px;margin-right:5px;font-size:.5em;font-family:monospace;cursor:pointer;color:#666}
+
+#divBottom{width:100%;margin:20px 0 0 0;padding:45px 0;text-align:center;clear:both; background:#111; color:#686868;}
+#divBottom a{ color:#686868;}
+
+
+@media screen and (max-width:960px){
+	#article{ width:100%}
+	.sidebar{ display:none;}
+}
+@media screen and (max-width:760px){
+	body{ padding-top:0}
+	.container{ padding:0 10px;}
+	.orw{ padding:0; margin:0;}
+	.header{ position:inherit; height:46px; padding:0; margin-bottom:15px;}
+	.header .container{ padding:0;}
+	.logo a{ height:35px; line-height:35px; margin:4px 0; padding-left:10px;}
+	.logo a img{max-height: 35px;}
+	#mnav{width:100%; background:rgba(255,255,255,0.95); position:absolute; top:46px; z-index:999;}
+	#mnav li{ line-height:28px;}
+	#mnav li>ul>li{text-indent: 15px;}
+	#mnav li a{ padding:3px 10px; display:block; border-bottom:1px solid #ededed}
+	#mnav li a:hover{ background:#f66; color:#fff;}
+	#article{ padding:0;}
+	#article .post{ padding:20px;margin-bottom: 15px;}
+	.navBar{display:none}
+	.nav-btn{ display:inline-block; right:10px; top:15px; position:absolute; font-size:18px; cursor:pointer;}
+	
+	.post .post-head .post-title {margin: 0;font-size: 1.6em;line-height: 1em;}
+	.post .post-head .post-meta span {margin: 0px 5px;white-space: nowrap;}
+	
+	.post .post-media {margin-top: 20px;}
+	.post .post-media img {width: 100%;}
+	.post .post-media b{ position:absolute; top:5px; left:5px; background:#f66; color:#fff; padding:3px 5px; font-weight:100; border-radius:3px;}
+	
+	.post .post-link{ clear: both; display: block; margin-bottom: 10px;}
+	
+	.post-content { font: 400 16px/1.6 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif; color: #333;}
+	.post-content p{ margin-bottom: 15px}
+	.post .post-content{ margin: 10px 0;}
+	
+	#divBottom{ margin:15px 0 0 0;padding:30px 0}
+	input.text{ width:200px;}
+	
+	#article #divCommentPost.post.post.reply-frm{ width:108%;left:-60px; position:relative;}
+}

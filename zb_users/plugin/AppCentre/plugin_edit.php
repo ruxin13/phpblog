@@ -19,7 +19,7 @@ $blogtitle = '应用中心-插件编辑';
 if (GetVars('id')) {
 	$app = $zbp->LoadApp('plugin', GetVars('id'));
 	$mt = array();
-	$ft = GetFilesInDir($zbp->path . '/zb_users/plugin/' . $app->id . '/', 'php|inc|png');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/plugin/' . $app->id . '/', 'php|inc|png|webp');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}

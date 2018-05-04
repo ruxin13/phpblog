@@ -34,5 +34,5 @@ function qiniuyun_output_option($value, $param, $text)
 
 function qiniuyun_test_image($url)
 {
-    return preg_match("/\.jpe?g|gif|png|svg|bmp|tiff$/i", $url);
+    return preg_match("/\.jpe?g|gif|png|svg|webp|bmp|tiff$/i", $url);
 }

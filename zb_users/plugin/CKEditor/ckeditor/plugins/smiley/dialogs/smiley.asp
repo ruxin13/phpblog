@@ -38,7 +38,7 @@ function(f) {
 		If IsArray(aryFileList) Then
 			j=UBound(aryFileList)
 			For f1=1 to j
-				If InStr("gif|jpg|png",Right(aryFileList(f1),3))>0 Then 
+				If InStr("gif|jpg|png|webp",Right(aryFileList(f1),3))>0 Then
 					e =e&Replace(Replace(Server.URLEncode(aryFileList(f1)),"+","%20"),"%2E",".")& IIf(f1=j,""," ")
 					p=i
 				End If 
