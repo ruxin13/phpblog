@@ -34,25 +34,59 @@
 						<div class="entry-content">
 						<div class="single-content">
 						{if $zbp->Config('zbpNana')->wzzy_kg=='1'}
-						{if ($article.Intro)}
-						<fieldset><legend><strong>摘要：</strong></legend><p>{$article.Intro}</p></fieldset>
+              {if ($article.Intro)}
+              <fieldset><legend><strong>摘要：</strong></legend><p>{$article.Intro}</p></fieldset>
+              {/if}
 						{/if}
-						{/if}						
+
+            <!-- swiper start -->
+            {if $article.imgs && count($article.imgs)>0}
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/css/swiper.min.css">
+              <div class="swiper-container p{count($article.imgs)}">
+                <div class="swiper-wrapper">
+                  {foreach $article.imgs as $slides}
+                    <div class="swiper-slide">
+                      <img data-src="{$slides}" class="swiper-lazy">
+                    </div>
+                  {/foreach}
+                </div>
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
+              </div>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.min.js"></script>
+              <script>
+                var swiper = new Swiper('.swiper-container', {
+                  // Enable lazy loading
+                  lazy: true,
+                  pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                  },
+                  navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                  }
+
+                });
+              </script>
+              {/if}
+            <!-- swiper end -->
 						{$article->Content}																	
 						</div>
 						<div class="clear"></div>
-							<div class="single_banquan">	
-								<strong>本文地址：</strong><a href="{$article.Url}" title="{$article.Title}"  target="_blank">{$article.Url}</a><br/>
-								{if $article.Metas.zbpNana_wzlx==3}
-									<strong>温馨提示：</strong>文章内容系作者个人观点，不代表{$name}对观点赞同或支持。<br/>
-									<strong>版权声明：</strong>本文为投稿文章，感谢&nbsp;<a href="{php}zbpNana_wenzhanglaiyuan($article->ID){/php}" target="_blank" rel="nofollow">{php}zbpNana_wenzhangzuozhe($article->ID){/php}</a>&nbsp;的投稿，版权归原作者所有，欢迎分享本文，转载请保留出处！
-								{elseif $article.Metas.zbpNana_wzlx==2}
-									<strong>温馨提示：</strong>文章内容系作者个人观点，不代表{$name}对观点赞同或支持。<br/>
-									<strong>版权声明：</strong>本文为转载文章，来源于&nbsp;<a href="{php}zbpNana_wenzhanglaiyuan($article->ID){/php}" target="_blank" rel="nofollow">{php}zbpNana_wenzhangzuozhe($article->ID){/php}</a>&nbsp;，版权归原作者所有，欢迎分享本文，转载请保留出处！
-								{else}
-									<strong>版权声明：</strong>本文为原创文章，版权归&nbsp;<a href="{$article.Author.Url}" target="_blank">{$article.Author.StaticName}</a>&nbsp;所有，欢迎分享本文，转载请保留出处！
-								{/if}
-							</div>
+<!--							<div class="single_banquan">	-->
+<!--								<strong>本文地址：</strong><a href="{$article.Url}" title="{$article.Title}"  target="_blank">{$article.Url}</a><br/>-->
+<!--								{if $article.Metas.zbpNana_wzlx==3}-->
+<!--									<strong>温馨提示：</strong>文章内容系作者个人观点，不代表{$name}对观点赞同或支持。<br/>-->
+<!--									<strong>版权声明：</strong>本文为投稿文章，感谢&nbsp;<a href="{php}zbpNana_wenzhanglaiyuan($article->ID){/php}" target="_blank" rel="nofollow">{php}zbpNana_wenzhangzuozhe($article->ID){/php}</a>&nbsp;的投稿，版权归原作者所有，欢迎分享本文，转载请保留出处！-->
+<!--								{elseif $article.Metas.zbpNana_wzlx==2}-->
+<!--									<strong>温馨提示：</strong>文章内容系作者个人观点，不代表{$name}对观点赞同或支持。<br/>-->
+<!--									<strong>版权声明：</strong>本文为转载文章，来源于&nbsp;<a href="{php}zbpNana_wenzhanglaiyuan($article->ID){/php}" target="_blank" rel="nofollow">{php}zbpNana_wenzhangzuozhe($article->ID){/php}</a>&nbsp;，版权归原作者所有，欢迎分享本文，转载请保留出处！-->
+<!--								{else}-->
+<!--									<strong>版权声明：</strong>本文为原创文章，版权归&nbsp;<a href="{$article.Author.Url}" target="_blank">{$article.Author.StaticName}</a>&nbsp;所有，欢迎分享本文，转载请保留出处！-->
+<!--								{/if}-->
+<!--							</div>-->
 <div class="clear"></div>
 {template:social}					
 <div class="clear"></div>
