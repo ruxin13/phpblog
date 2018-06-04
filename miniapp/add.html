@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    label.col-sm-3{color: darkred;}
+  </style>
+  <title>add</title>
+</head>
+<body>
+<h4 class="text-center" style="margin: 1em 0;">题目添加</h4>
+<div class="content-wrapper">
+  <form role="form" class="form-horizontal needs-validation" novalidate method="post" action="add_api.php">
+    <div class="form-group">
+      <label for="question" class="col-sm-3 control-label">问题</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="question" name="question" autocomplete="off" maxlength="100" placeholder="请输入问题" required>
+        <div class="invalid-feedback">请输入问题</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="col-sm-3 control-label">请选择题目类型</label>
+      <select class="form-control custom-select" name="type" id="type" required>
+        <option value="0">常识</option>
+        <option value="1">地理</option>
+        <option selected value="2">历史</option>
+        <option value="3">文学</option>
+        <option value="4">天文</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="answer1" class="col-sm-3 control-label">答案1</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="answer1" autocomplete="off" name="answer1" maxlength="100" placeholder="请输入答案1" required>
+        <div class="invalid-feedback">请输入答案1</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="answer2" class="col-sm-3 control-label">答案2</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="answer2" autocomplete="off" name="answer2" maxlength="100" placeholder="请输入答案2" required>
+        <div class="invalid-feedback">请输入答案2</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="answer3" class="col-sm-3 control-label">答案3</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="answer3" autocomplete="off" name="answer3" maxlength="100" placeholder="请输入答案3" required>
+        <div class="invalid-feedback">请输入答案3</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="answer4" class="col-sm-3 control-label">答案4</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="answer4" autocomplete="off" name="answer4" maxlength="100" placeholder="请输入答案4" required>
+        <div class="invalid-feedback">请输入答案4</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="answer" class="col-sm-3 control-label">请选择正确答案编号</label>
+      <select class="form-control custom-select" name="answer" id="answer" required>
+        <option value="1">答案1</option>
+        <option value="2">答案2</option>
+        <option value="3">答案3</option>
+        <option value="4">答案4</option>
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" id="add">添加</button>
+        <a href="list.html">查看列表</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>
+</body>
+</html>

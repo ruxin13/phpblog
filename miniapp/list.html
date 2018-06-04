@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="page.css">
+  <style>
+    .btn-link{color: #8AC78F;}
+  </style>
+  <title>list</title>
+</head>
+<body>
+<h4 class="text-center" style="margin: 1em 0;">题目列表</h4>
+<div class="content-wrapper">
+  <div id="accordion" class="accd"></div>
+
+    <ul class="page" id="page"></ul>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="page.js"></script>
+<script>
+  $(function () {
+    var currentPage = 1;
+    var pageSize = 10;
+    var totalPage = 1;
+
+    loadData(currentPage);
+
+    $("#page").page({
+      totalPages: totalPage,//total Pages
+      liNums: 7,//the li numbers(advice use odd)
+      activeClass: 'activP', //active class style
+      prv: '上一页',//prev button name
+      next: '下一页',//next button name
+      hasFirstPage: false,//whether has first button
+      hasLastPage: false,//whether has last button
+      hasPrv: true,//whether has prev button
+      hasNext: true,//whether has next button
+      callBack : function(page){
+        //callBack function，page:active page
+        console.log(page);
+        currentPage = page;
+        loadData(currentPage);
+      }
+    });
+
+    function loadData(currentPage) {
+      $.ajax({
+        type: "GET",
+        url: "/miniapp/sub_list.php?currentPage=" + currentPage + "&pageSize=" + pageSize,
+        async: false,
+        dataType: "json",
+        success: function(ret){
+          console.log(ret);
+          var total = ret.total;
+          totalPage = Math.ceil(total / pageSize);
+          var data = ret.data;
+          var html = "";
+          if (data && data.length > 0) {
+            for (var i=1;i<=data.length;i++) {
+              html += '<div class="panel panel-success">';
+              html += '<div class="panel-heading">' + data[i-1].sid + ' ' + data[i-1].question + '</div>';
+              html += '<div class="panel-body">';
+              var slist = "";
+              slist += "<ul>";
+              for (var j=0;j<data[i-1].answers.length;j++) {
+                slist += '<div class="form-check" data-id="' + data[i-1].answers[j].id + '">';
+                var isCorrect = '';
+                if (data[i-1].answers[j].id === data[i-1].answer) {
+                  isCorrect = 'checked="checked"'
+                }
+                slist += '<input class="form-check-input" disabled '+ isCorrect +' type="checkbox" value="" id="defaultCheck'+i+j+'">';
+                slist += '<label class="form-check-label" for="defaultCheck'+i+j+'">';
+                slist += data[i-1].answers[j].answer;
+                slist += '</label></div>';
+              }
+              slist += "</ul>";
+              html += slist;
+              html += '</div></div>';
+            }
+          }
+          $(".accd").html(html);
+        }
+      });
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
