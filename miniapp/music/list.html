@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="../page.css">
+  <style>
+    .btn-link{color: #8AC78F;}
+  </style>
+  <title>list</title>
+</head>
+<body>
+<h4 class="text-center" style="margin: 1em 0;">题目列表</h4>
+<button id="add">添加</button>
+<div class="content-wrapper">
+  <div id="accordion" class="accd"></div>
+
+  <ul class="page" id="page"></ul>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="../page.js"></script>
+<script>
+  $(function () {
+    var currentPage = 1;
+    var pageSize = 10;
+    var totalPage = 1;
+
+    loadData(currentPage);
+
+    $("#page").page({
+      totalPages: totalPage,//total Pages
+      liNums: 7,//the li numbers(advice use odd)
+      activeClass: 'activP', //active class style
+      prv: '上一页',//prev button name
+      next: '下一页',//next button name
+      hasFirstPage: false,//whether has first button
+      hasLastPage: false,//whether has last button
+      hasPrv: true,//whether has prev button
+      hasNext: true,//whether has next button
+      callBack : function(page){
+        //callBack function，page:active page
+        console.log(page);
+        currentPage = page;
+        loadData(currentPage);
+      }
+    });
+
+    function loadData(currentPage) {
+      $.ajax({
+        type: "GET",
+        url: "/miniapp/music/list.php",
+        async: false,
+        data: {currentPage: currentPage, pageSize: pageSize},
+        dataType: "json",
+        success: function(ret){
+          console.log(ret);
+          var total = ret.total;
+          totalPage = Math.ceil(total / pageSize);
+          var data = ret.data;
+          var html = "";
+          if (data && data.length > 0) {
+            for (var i=1;i<=data.length;i++) {
+              html += '<div class="panel panel-success">';
+              html += '<div class="panel-heading">' + data[i-1].mid + ' ' + data[i-1].fname + '' +
+                '<button class="bindTapDetail" data-mid="' + data[i-1].mid + '">编辑</button>' +
+                '<button class="bindTapDelete" data-mid="' + data[i-1].mid + '">删除</button>' +
+                '</div>';
+              html += '<div class="panel-body"><ul>';
+              html += '<li>作者：' + data[i-1].author + '</li>';
+              html += '<li>地址：' + data[i-1].url + '</li>';
+              html += '<li>封面：' + data[i-1].poster + '</li>';
+              html += '<li>专辑：' + data[i-1].album + '</li>';
+              html += '<li>流派：' + data[i-1].genre + '</li>';
+              html += '<li>类型：' + data[i-1].ftype + '</li>';
+              html += '<li>时长：' + data[i-1].duration + '</li>';
+              html += '</ul></div></div>';
+            }
+          }
+          $(".accd").html(html);
+        }
+      });
+    }
+
+  });
+
+  $(document).on("click", ".bindTapDetail", function () {
+    var mid = this.dataset.mid;
+    window.location.href = 'edit.html?mid=' + mid
+  });
+  $("#add").on("click", function () {
+    window.location.href = "add.html"
+  });
+  $(document).on("click", ".bindTapDelete", function () {
+    var mid = this.dataset.mid;
+    window.location.href = 'delete.php?mid=' + mid
+  });
+</script>
+
+</body>
+</html>
