@@ -27,8 +27,8 @@ if (!$pageSize) {$pageSize = 100;}
 
 $currentIndex = ($currentPage - 1) * $pageSize;
 
-$count_sql = "SELECT * FROM music ORDER BY mid DESC limit $currentIndex,$pageSize";
-$all_sql = "SELECT * FROM music";
+$count_sql = "SELECT * FROM shijiemingqu ORDER BY mid DESC limit $currentIndex,$pageSize";
+$all_sql = "SELECT * FROM shijiemingqu";
 
 $result = mysqli_query($conn, $count_sql);
 
