@@ -4,12 +4,13 @@ $zbp->Load();
 ob_clean();
 header('Content-Type: application/x-javascript; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate');
+if (!$zbp->ValidToken(GetVars('token', 'GET'),'AppCentre_JS')) {$zbp->ShowError(5, __FILE__, __LINE__);die();}
 $t = '&token=' . $zbp->GetToken('AppCentre');
 ?>
 
 $(document).ready(function(){ 
 
-$("#divMain2").prepend("<form class='search' name='edit' id='edit' method='post' enctype='multipart/form-data' action='"+bloghost+"zb_users/plugin/AppCentre/app_upload.php'><p>本地上传并安装插件zba文件:&nbsp;<input type='file' id='edtFileLoad' name='edtFileLoad' size='40' />&nbsp;&nbsp;&nbsp;&nbsp;<input type='submit' class='button' value='提交' name='B1' />&nbsp;&nbsp;<input class='button' type='reset' value='重置' name='B2' />&nbsp;</p></form>")
+$("#divMain2").prepend("<form class='search' name='edit' id='edit' method='post' enctype='multipart/form-data' action='"+bloghost+"zb_users/plugin/AppCentre/app_upload.php'><p>本地上传并安装插件zba文件:&nbsp;<input type='file' id='edtFileLoad' name='edtFileLoad' size='40' />&nbsp;&nbsp;&nbsp;&nbsp;<input type='submit' class='button' value='提交' name='B1' />&nbsp;&nbsp;<?php echo "<input id='token' name='token' type='hidden' value='".$zbp->GetToken('AppCentre')."'/>"?><input class='button' type='reset' value='重置' name='B2' />&nbsp;</p></form>")
 
 if(app_enabledevelop){
 
@@ -29,7 +30,7 @@ $(".plugin").each(function(){
 
 	s=s+"&nbsp;&nbsp;&nbsp;&nbsp;<a class=\"button\"  href='"+bloghost+"zb_users/plugin/AppCentre/app_pack.php?type=plugin&id="+t+"<?php echo $t?>' title='导出该插件' target='_blank'><img height='16' width='16' src='"+bloghost+"zb_users/plugin/AppCentre/images/download.png'/></a>";
 
-	if(app_username){
+	if(app_enabledevelop){
 		s=s+"&nbsp;&nbsp;&nbsp;&nbsp;<a class=\"button\" href='"+bloghost+"zb_users/plugin/AppCentre/submit.php?type=plugin&amp;id="+t+"<?php echo $t?>' title='上传应用到官方网站应用中心' target='_blank'><img height='16' width='16' src='"+bloghost+"zb_users/plugin/AppCentre/images/drive-upload.png'/></a>";
 	}
 

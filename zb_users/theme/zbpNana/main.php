@@ -13,8 +13,8 @@ if ($_GET['act']){
 $act = $_GET['act'] == "" ? 'ztsm' : $_GET['act'];
 }
 
-require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
-require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
+require $blogpath . 'zb_system/admin/admin_header.php';
+require $blogpath . 'zb_system/admin/admin_top.php';
 
 $percolors = array("C01E22", "0088cc", "FF5E52", "2CDB87", "00D6AC", "EA84FF", "FDAC5F", "FD77B2", "0DAAEA", "C38CFF", "FF926F", "8AC78F", "C7C183");
 
@@ -481,6 +481,7 @@ border: 1px solid #aaa; width: 86px;height: 27px;
 		<p>3、启用主题后模块中的控制面板、搜索、最近发表、最新留言、标签列表、作者列表等模块已经重建过，所以需要直接编辑提交方可生效。</p>
 		<p>4、启用主题后，请根据zbpNana主题配置相关项目进行设置，每一个选项都配有说明，部分项目也设置有默认内容，请根据内容修改即可。特别是『功能开关』配置中，建议根据需求把相关功能开启，建议全开启。如果选择CMS布局，请继续设置CMS相关项目，其中双栏文章的分类ID一定要是双数才行，就是需要两个或四个及以上的分类，要不然会错位；如果选择图片布局，记得到『网站设置』中的『页面设置』对列表页数量改为12的倍数，如12篇，或24篇等。</p>
 		<p>5、首页、分类目录页使用默认侧边栏（侧边栏1），文章页、页面使用侧边栏2。</p>
+		<p>6、免费主题请保留主题版权及链接，如需去除版权请赞助20元版权费，并可加入懿古今主题交流群（477678587），赞助后请联系本人（QQ：2226524923）邀请加入。</p>
 	</td></tr>	
 </table>
 </form>
@@ -727,6 +728,6 @@ $('.color-box').click(function() {
 </script> 
 
 <?php
-require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
+require $blogpath . 'zb_system/admin/admin_footer.php';
 RunTime();
 ?>

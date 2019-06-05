@@ -14,28 +14,30 @@ if (!$zbp->CheckPlugin('AppCentre')) {$zbp->ShowError(48);die();}
 
 if (!$zbp->ValidToken(GetVars('token', 'GET'),'AppCentre')&&GetVars('id', 'GET')) {$zbp->ShowError(5, __FILE__, __LINE__);die();}
 
+AppCentre_CheckInSecurityMode();
+
 $blogtitle = '应用中心-主题编辑';
 
 if (GetVars('id')) {
 	$app = $zbp->LoadApp('theme', GetVars('id'));
 	$mt = array();
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/', 'php|inc|png|webp');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/', 'php|inc|png');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/include/', 'php|inc|png|webp');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/include/', 'php|inc|png');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/style/', 'php|inc|png|webp');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/style/', 'php|inc|png');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/template/', 'php|inc|png|webp');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/template/', 'php|inc|png');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
-	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/source/', 'php|inc|png|webp');
+	$ft = GetFilesInDir($zbp->path . '/zb_users/theme/' . $app->id . '/source/', 'php|inc|png');
 	foreach ($ft as $f) {
 		$mt[] = filemtime($f);
 	}
@@ -61,7 +63,7 @@ if (count($_POST) > 0) {
   if (!$zbp->ValidToken(GetVars('token', 'POST'),'AppCentre')) {$zbp->ShowError(5, __FILE__, __LINE__);die();}
 
 	$app->id = trim($_POST['app_id']);
-	if (!CheckRegExp($app->id, "/^[A-Za-z0-9_]{3,30}/")) {$zbp->ShowError('ID名必须是字母数字和下划线组成,长度3-30字符.');die();}
+	if (!CheckRegExp($app->id, "/^[A-Za-z0-9_]{3,30}$/")) {$zbp->ShowError('ID名必须是字母数字和下划线组成,长度3-30字符.');die();}
 	if (!GetVars('id')) {
 		$app2 = $zbp->LoadApp('theme', $app->id);
 		if ($app2->id) {$zbp->ShowError('已存在同名的APP应用.');die();}
@@ -158,8 +160,8 @@ if (count($_POST) > 0) {
 	Redirect($_SERVER["HTTP_REFERER"]);
 }
 
-require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
-require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
+require $blogpath . 'zb_system/admin/admin_header.php';
+require $blogpath . 'zb_system/admin/admin_top.php';
 
 ?>
 <div id="divMain">
@@ -390,7 +392,7 @@ require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
   </div>
 </div>
 <?php
-require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
+require $blogpath . 'zb_system/admin/admin_footer.php';
 
 RunTime();
 ?>

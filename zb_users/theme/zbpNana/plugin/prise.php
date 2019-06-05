@@ -87,7 +87,7 @@ class zbpNana_prise {
 		$count = $this->prise_count?' <span>'.$this->prise_count.'</span>':'<span></span>';
 		$postId = $this->post_id;
 		$action = "zbpNana_prise('$postId')";
-		$btn_html = '<a href="javascript:;" id="zbpNana_prise_id-%s" onclick="%s" class="am-icon-thumbs-o-up %s" title="好文！一定要点赞！"><i class="fa fa-thumbs-up"></i>点赞%s</a>';
+		$btn_html = '<a href="javascript:;" id="zbpNana_prise_id-%s" onclick="%s" class="am-icon-thumbs-o-up %s" title="好文！一定要点赞！"><i class="fas fa-thumbs-up"></i>点赞%s</a>';
 		$button = sprintf($btn_html, $postId, $action, $class, $count);
 		return $button;
 	}

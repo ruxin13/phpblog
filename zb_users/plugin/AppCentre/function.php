@@ -4,19 +4,27 @@ function AppCentre_SubMenus($id) {
 	//m-now
 	global $zbp;
 
-	echo '<a href="main.php"><span class="m-left ' . ($id == 1 ? 'm-now' : '') . '">浏览在线应用</span></a>';
+	if (!AppCentre_InSecurityMode()) {
+		echo '<a href="main.php"><span class="m-left ' . ($id == 1 ? 'm-now' : '') . '">浏览在线应用</span></a>';
+	}
+	
 	echo '<a href="main.php?method=check"><span class="m-left ' . ($id == 2 ? 'm-now' : '') . '">检查应用更新</span></a>';
 	echo '<a href="update.php"><span class="m-left ' . ($id == 3 ? 'm-now' : '') . '">系统更新与校验</span></a>';
 
-	if ($zbp->Config('AppCentre')->username && $zbp->Config('AppCentre')->password) {
+	if ($zbp->Config('AppCentre')->token) {
 		echo '<a href="client.php"><span class="m-left ' . ($id == 9 ? 'm-now' : '') . '">我的应用仓库</span></a>';
 	} else {
 		echo '<a href="client.php"><span class="m-left ' . ($id == 9 ? 'm-now' : '') . '">登录应用商城</span></a>';
 	}
 
-	echo '<a href="setting.php"><span class="m-right ' . ($id == 4 ? 'm-now' : '') . '">设置</span></a>';
-	echo '<a href="plugin_edit.php"><span class="m-right ' . ($id == 5 ? 'm-now' : '') . '">新建插件</span></a>';
-	echo '<a href="theme_edit.php"><span class="m-right ' . ($id == 6 ? 'm-now' : '') . '">新建主题</span></a>';
+	if (!AppCentre_InSecurityMode()) {
+		echo '<a href="setting.php"><span class="m-right ' . ($id == 4 ? 'm-now' : '') . '">设置</span></a>';
+		echo '<a href="plugin_edit.php"><span class="m-right ' . ($id == 5 ? 'm-now' : '') . '">新建插件</span></a>';
+		echo '<a href="theme_edit.php"><span class="m-right ' . ($id == 6 ? 'm-now' : '') . '">新建主题</span></a>';
+	}
+
+	echo '<a href="security.php"><span class="m-right ' . ($id == 7 ? 'm-now' : '') . '">安全模式</span></a>';
+
 }
 
 function AppCentre_GetCheckQueryString() {
@@ -58,20 +66,34 @@ function Server_Open($method) {
 		}
 
 		$s = Server_SendRequest(APPCENTRE_URL . '?down=' . GetVars('id', 'GET'));
-		if (App::UnPack($s)) {
-
+		try {
 			$xml = $s;
-	        $charset = array();
-	        $charset[1] = substr($xml, 0, 1);
-	        $charset[2] = substr($xml, 1, 1);
-	        if (ord($charset[1]) == 31 && ord($charset[2]) == 139) {
-	            $xml = gzdecode($xml);
-	        }
+			$charset = array();
+			$charset[1] = substr($xml, 0, 1);
+			$charset[2] = substr($xml, 1, 1);
+			if (ord($charset[1]) == 31 && ord($charset[2]) == 139) {
+				$xml = gzdecode($xml);
+			}
+			$xml = simplexml_load_string($xml);
+			if ($xml === false) {
+				throw new Exception('XML Error');
+			}
+		} catch (Exception $e) {
+			$zbp->SetHint('bad', 'App下载失败！');
+			throw $e;
+		}
 
-	        $xml = simplexml_load_string($xml);
-	        $type = $xml['type'];
-	        $id = $xml->id;
-	        $dir = $zbp->path . 'zb_users/' . $type . '/' . $id . '/';
+		$id = $xml->id;
+
+		if (!$zbp->CheckApp($id)) {
+			AppCentre_CheckInSecurityMode();
+		}
+
+		if (App::UnPack($s)) {
+			
+			$type = $xml['type'];
+			
+			$dir = $zbp->path . 'zb_users/' . $type . '/' . $id . '/';
 
 			if( is_readable($dir . $type . '.xml') ){
 				$c = file_get_contents($dir . $type . '.xml');
@@ -86,7 +108,7 @@ function Server_Open($method) {
 		break;
 	case 'search':
 		if (trim(GetVars('q', 'GET')) == '') {
-			continue;
+			return;
 		}
 
 		$s = Server_SendRequest(APPCENTRE_URL . '?search=' . urlencode(GetVars('q', 'GET'))  .'&'. GetVars('QUERY_STRING', 'SERVER') );
@@ -96,16 +118,8 @@ function Server_Open($method) {
 	case 'view':
 		$s = Server_SendRequest(APPCENTRE_URL . '?' . GetVars('QUERY_STRING', 'SERVER'));
 		if (strpos($s, '<!--developer-nologin-->') !== false) {
-			if ($zbp->Config('AppCentre')->username || $zbp->Config('AppCentre')->password) {
-				$zbp->Config('AppCentre')->username = '';
-				$zbp->Config('AppCentre')->password = '';
-				$zbp->SaveConfig('AppCentre');
-			}
-		}
-		if (strpos($s, '<!--shop-nologin-->') !== false) {
-			if ($zbp->Config('AppCentre')->shop_username || $zbp->Config('AppCentre')->shop_password) {
-				$zbp->Config('AppCentre')->shop_username = '';
-				$zbp->Config('AppCentre')->shop_password = '';
+			if ($zbp->Config('AppCentre')->token) {
+				$zbp->Config('AppCentre')->token = '';
 				$zbp->SaveConfig('AppCentre');
 			}
 		}
@@ -137,11 +151,15 @@ function Server_Open($method) {
 		}
 		die();
 		break;
-	case 'vaild':
+	case 'login':
 		$data = array();
-		$data["username"] = GetVars("app_username");
-		$data["password"] = md5(GetVars("app_password"));
-		$s = Server_SendRequest(APPCENTRE_URL . '?vaild', $data);
+		$data["token"] = GetVars("app_token");
+		$data["sign"] = AppCentre_Get_Sign(GetVars("app_token"));
+		$s = Server_SendRequest(APPCENTRE_URL . '?login', $data);
+		return $s;
+		break;
+	case 'logout':
+		$s = Server_SendRequest(APPCENTRE_URL . '?logout');
 		return $s;
 		break;
 	case 'submitpre':
@@ -208,8 +226,8 @@ function Server_SendRequest_CUrl($url, $data = array(), $u, $c) {
 	curl_setopt($ch, CURLOPT_TIMEOUT, 120);
 	if(isset($_SERVER['HTTP_ACCEPT'])){
 		curl_setopt($ch,CURLOPT_HTTPHEADER,array (
-	         'Accept: ' . $_SERVER['HTTP_ACCEPT']
-	    ));
+			 'Accept: ' . $_SERVER['HTTP_ACCEPT']
+		));
 	}
 	curl_setopt($ch, CURLOPT_USERAGENT, $u);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -400,6 +418,10 @@ function AppCentre_PHPVersion($default) {
 		'5.6'=>'5.6',
 		'7.0'=>'7.0',
 		'7.1'=>'7.1',
+		'7.2'=>'7.2',
+		'7.3'=>'7.3',
+		'7.4'=>'7.4',
+		'8.0'=>'8.0'
 		);
 	$i = 0;
 	foreach ($array as $key => $value) {

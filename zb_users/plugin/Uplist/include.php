@@ -6,6 +6,9 @@ function ActivePlugin_Uplist() {
 }
 function Uplist_Plus() {
 	global $zbp;
-	echo '<link href="'. $zbp->host .'zb_users/plugin/Uplist/style.css?v=1.1" rel="stylesheet">' . "\r\n";
-	echo '<script src="'. $zbp->host .'zb_users/plugin/Uplist/main.js?v=1.1"></script>' . "\r\n";
+	$action = GetVars('act', 'GET');
+	if($action=='UploadMng'){
+		echo '<link href="'. $zbp->host .'zb_users/plugin/Uplist/style.css?v=1.2" rel="stylesheet">' . "\r\n";
+		echo '<script src="'. $zbp->host .'zb_users/plugin/Uplist/main.js?v=1.2"></script>' . "\r\n";
+	}
 }

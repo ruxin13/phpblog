@@ -5,7 +5,7 @@
 <url>http://www.yiwuku.com/</url>
 <note>以图片列表形式可视化操作后台附件管理</note>
 <description>改变枯燥文字表格方式，精简参数并自动换算大小单位，尽可能高效方便的操作附件管理</description>
-<path>main.php</path>
+<path></path>
 <include>include.php</include>
 <level>1</level>
 <author>
@@ -19,9 +19,9 @@
   <url></url>
 </source>
 <adapted>151603</adapted>
-<version>1.1</version>
+<version>1.2</version>
 <pubdate>2017-11-25</pubdate>
-<modified>2018-01-23</modified>
+<modified>2018-10-22</modified>
 <price>0</price>
 <advanced>
   <dependency></dependency>

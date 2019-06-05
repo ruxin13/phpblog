@@ -13,11 +13,13 @@ if (!$zbp->CheckRights($action)) {$zbp->ShowError(6);die();}
 if (!$zbp->CheckPlugin('AppCentre')) {$zbp->ShowError(48);die();}
 
 if (!$zbp->ValidToken(GetVars('token', 'GET'),'AppCentre')) {$zbp->ShowError(5, __FILE__, __LINE__);die();}
-  
+
+AppCentre_CheckInSecurityMode();
+
 $blogtitle = '应用中心-提交应用';
 
 $s = '';
-$w = [];
+$w = array();
 
 $app = new App;
 $app->LoadInfoByXml($_GET['type'], $_GET['id']);
@@ -34,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $url = Server_Open('submit');
+    $url = trim($url);
     if (substr($url, 0, 4) == 'http') {
         Redirect($url);
     } else {
@@ -45,8 +48,8 @@ if (!$s) {
     $s = '{"id":"未提交","author":"未提交","modified":"未提交"}';
 }
 
-require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
-require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
+require $blogpath . 'zb_system/admin/admin_header.php';
+require $blogpath . 'zb_system/admin/admin_top.php';
 
 ?>
 <div id="divMain">
@@ -99,7 +102,7 @@ $("#zblog_app_date").val(jsoninfo.modified);
 
 
 <?php
-require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
+require $blogpath . 'zb_system/admin/admin_footer.php';
 
 RunTime();
 ?>

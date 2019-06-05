@@ -15,6 +15,7 @@ if (!$zbp->CheckPlugin('AppCentre')) {$zbp->ShowError(48);die();}
 $blogtitle = '应用中心(客户端)';
 
 if (!$zbp->Config('AppCentre')->HasKey('enabledcheck')) {
+	AppCentre_CheckInSecurityMode();
 	$zbp->Config('AppCentre')->enabledcheck = 1;
 	$zbp->Config('AppCentre')->checkbeta = 0;
 	$zbp->Config('AppCentre')->enabledevelop = 0;
@@ -22,15 +23,18 @@ if (!$zbp->Config('AppCentre')->HasKey('enabledcheck')) {
 }
 
 if (count($_POST) > 0) {
-
 	$zbp->SetHint('good');
 	Redirect('./main.php');
 }
 
+if (AppCentre_InSecurityMode()) {
+	$zbp->SetHint('good', '您已开启安全模式，只能更新现有应用，无法下载新应用。');
+}
+
 Add_Filter_Plugin('Filter_Plugin_CSP_Backend', 'AppCentre_UpdateCSP');
 
-require $blogpath . 'zb_system/xiaoyezi/admin_header.php';
-require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
+require $blogpath . 'zb_system/admin/admin_header.php';
+require $blogpath . 'zb_system/admin/admin_top.php';
 
 ?>
 <div id="divMain">
@@ -42,6 +46,7 @@ require $blogpath . 'zb_system/xiaoyezi/admin_top.php';
 
 <?php
 $method = GetVars('method', 'GET');
+
 if (!$method) {
 	$method = 'view';
 }
@@ -57,7 +62,7 @@ Server_Open($method);
   </div>
 </div>
 <?php
-require $blogpath . 'zb_system/xiaoyezi/admin_footer.php';
+require $blogpath . 'zb_system/admin/admin_footer.php';
 
 RunTime();
 ?>

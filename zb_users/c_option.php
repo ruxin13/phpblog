@@ -4,7 +4,7 @@ return array (
   'ZC_DATABASE_TYPE' => 'mysqli',
   'ZC_SQLITE_NAME' => '',
   'ZC_SQLITE_PRE' => 'zbp_',
-  'ZC_MYSQL_SERVER' => '60.205.227.1',
+  'ZC_MYSQL_SERVER' => 'localhost',
   'ZC_MYSQL_USERNAME' => 'blog_yehui_site',
   'ZC_MYSQL_PASSWORD' => '4nRPJMEG5Y',
   'ZC_MYSQL_NAME' => 'blog_yehui_site',

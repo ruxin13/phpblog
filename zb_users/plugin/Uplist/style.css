@@ -3,21 +3,27 @@
 *Description:        By www.yiwuku.com
 *Website:            https://app.zblogcn.com/?auth=3ec7ee20-80f2-498a-a5dd-fda19b198194
 *Author:             尔今 erx@qq.com
-*update:             2017-11-23(Last:2018-01-23)
+*update:             2017-11-23(Last:2018-10-11)
 -------------------*/
-
-.uplist{overflow:hidden;}
-.uplist li{float:left;width:200px;margin:0 10px 10px 0;background:#f6f6f6;}
+.uplist{overflow:hidden;clear:both;}
+.uplist li{position:relative;float:left;width:200px;margin:5px 15px 10px 0;background:#f6f6f6;}
 .uplist li .mp{display:block;height:150px;overflow:hidden;}
 .uplist li .mp img{width:100%;min-height:100%}
-.uplist li .vc{height:24px;line-height:24px;font-size:12px;font-family:Arial;background:#222;padding:0 5px;overflow:hidden;}
-.uplist li:hover .vc{position:relative;background:#39c;overflow:hidden;}
-.uplist li .vc span{color:#777;}
-.uplist li .vc .cpurl{margin-left:10px;color:#777 !important;}
+.uplist li .vc{position:absolute;left:0;bottom:0;width:100%;height:24px;line-height:24px;font-size:12px;font-family:Arial;background:#222;background:rgba(0,0,0,.68);padding:0 5px;overflow:hidden;}
+.uplist li:hover .vc{background:#3a6ea5;overflow:hidden;}
+.uplist li .vc span{color:#999;}
+.uplist li .vc .cpurl{margin-left:15px;color:#bbb !important;}
 .uplist li .vc .del{float:right;color:#fff !important;font-size:18px;}
-.uplist li .vc input{position:absolute;top:-100%;left:-100%;opacity:0}
-.uplist li:hover .vc span{color:#ddd !important;}
-.uplist li:hover .vc .cpurl{color:#fff !important;}
-.uplist-tip{color:#bbb;margin:1px 0 30px;padding:4px 8px;font-size:12px;border:1px #eee solid;}
-.uplist-tip a{color:#aaa !important;}
-form[name='upload'] + .tableFull{display:none;}
+.uplist li .vc .flink{position:absolute;top:-100%;left:-100%;opacity:0}
+.uplist li .vc.selected{background:#f50;}
+.uplist li:hover .vc span, .uplist li .vc.selected span{color:#ddd !important;}
+.uplist li:hover .vc .cpurl, .uplist li .vc.selected .cpurl{color:#fff !important;}
+.uplist-tip{color:#bbb;margin:1px 0 50px;padding:4px 8px;font-size:12px;border:1px #eee solid;}
+.uplist-tip a{color:#888 !important;}
+.tableFull{display:none;}
+.ulid{margin:-2px 6px 0 0;vertical-align:middle;}
+.uplist-act{position:absolute;text-align:right;}
+.search, .pagebar{position:relative;}
+.search .uplist-act{right:10px;bottom:16px;}
+.pagebar .uplist-act{top:9px;right:0;}
+input.button{margin-right:0;}

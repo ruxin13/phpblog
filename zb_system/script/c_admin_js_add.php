@@ -1,8 +1,10 @@
 <?php
 /**
- * Z-Blog with PHP
+ * Z-Blog with PHP.
+ *
  * @author
  * @copyright (C) RainbowSoft Studio
+ *
  * @version 2.0 2013-06-14
  */
 require '../function/c_system_base.php';
@@ -193,9 +195,15 @@ function AddHeaderIcon(s){
 
 function AutoHideTips(){
     if($("p.hint:visible").length>0){
-        $("p.hint:visible").delay(3500).hide(1500,function(){});
+        $("p.hint:visible").delay(10000).hide(1500,function(){});
     }
 }
+
+function ShowCSRFHint() {
+    $('.main').prepend('<div class="hint"><p class="hint hint_bad"><?php echo $lang['error']['94']; ?></p></div>'.replace('%s', $('meta[name=csrfExpiration]').attr('content')));
+}
+
+
 //*********************************************************
 // 目的：
 //*********************************************************
@@ -251,6 +259,16 @@ $(document).ready(function(){
     if(s != undefined && s.indexOf("none.gif") != -1 ){
         AddHeaderIcon(bloghost + "zb_system/image/common/window.png");
     }
+
+    var startTime = new Date().getTime();
+    var csrfInterval = setInterval(function () {
+        var timeout = $('meta[name=csrfExpiration]').attr('content') || 1; // Re-get expiration value every time
+        var timeDiff = new Date().getTime() - startTime;
+        if (timeDiff > Math.floor(timeout) * 60 * 60 * 1000) {
+            ShowCSRFHint();
+            clearInterval(csrfInterval);
+        }
+    }, 30 * 60 * 1000);
 });
 
 
@@ -279,7 +297,6 @@ if ($zbp->option['ZC_JS_304_ENABLE']) {
         die;
     }
 }
-
 
 $zbp->CheckGzip();
 $zbp->StartGzip();

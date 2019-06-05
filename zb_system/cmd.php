@@ -1,4 +1,5 @@
 <?php
+
 require './function/c_system_base.php';
 $zbp->Load();
 $action = GetVars('act', 'GET');
@@ -14,16 +15,16 @@ foreach ($GLOBALS['hooks']['Filter_Plugin_Cmd_Begin'] as $fpname => &$fpsignal) 
 
 switch ($action) {
     case 'login':
-        if ( !empty($zbp->user->ID) && GetVars('redirect', 'GET')) {
+        if (!empty($zbp->user->ID) && GetVars('redirect', 'GET')) {
             Redirect(GetVars('redirect', 'GET'));
         }
         if ($zbp->CheckRights('admin')) {
             Redirect('cmd.php?act=admin');
         }
-        if ( empty($zbp->user->ID) && GetVars('redirect', 'GET')) {
+        if (empty($zbp->user->ID) && GetVars('redirect', 'GET')) {
             setcookie("redirect", GetVars('redirect', 'GET'), 0, $zbp->cookiespath);
         }
-        Redirect('xiaoyezi.php');
+        Redirect('login.php');
         break;
     case 'logout':
         CheckIsRefererValid();
@@ -31,17 +32,17 @@ switch ($action) {
         Redirect('../');
         break;
     case 'admin':
-        Redirect('xiaoyezi/index.php?act=admin');
+        Redirect('admin/index.php?act=admin');
         break;
     case 'verify':
-        /**
+        /*
          * 考虑兼容原因，此处不加CSRF验证。logout加的原因是主题的退出无大碍。
          */
         if (VerifyLogin()) {
-            if ( !empty($zbp->user->ID) && GetVars('redirect', 'COOKIE')) {
+            if (!empty($zbp->user->ID) && GetVars('redirect', 'COOKIE')) {
                 Redirect(GetVars('redirect', 'COOKIE'));
             }
-            Redirect('xiaoyezi/index.php?act=admin');
+            Redirect('admin/index.php?act=admin');
         } else {
             Redirect('../');
         }
@@ -78,6 +79,7 @@ switch ($action) {
                 misc_updateinfo();
                 break;
             case 'showtags':
+                $zbp->csrfExpiration = 48;
                 CheckIsRefererValid();
                 if (!$zbp->CheckRights('ArticleEdt')) {
                     Http404();
@@ -131,7 +133,7 @@ switch ($action) {
         die();
     break;
     case 'ArticleEdt':
-        Redirect('xiaoyezi/edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'ArticleDel':
         CheckIsRefererValid();
@@ -142,18 +144,20 @@ switch ($action) {
         Redirect('cmd.php?act=ArticleMng');
         break;
     case 'ArticleMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'ArticlePst':
+        $zbp->csrfExpiration = 48;
         CheckIsRefererValid();
         PostArticle();
         $zbp->BuildModule();
         $zbp->SaveCache();
         $zbp->SetHint('good');
-        Redirect('cmd.php?act=ArticleMng');
+        echo '<script>localStorage.removeItem("zblogphp_article_" + decodeURIComponent(' . urlencode(GetVars('ID', 'POST')) . '));</script>';
+        RedirectByScript('cmd.php?act=ArticleMng');
         break;
     case 'PageEdt':
-        Redirect('xiaoyezi/edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'PageDel':
         CheckIsRefererValid();
@@ -164,21 +168,23 @@ switch ($action) {
         Redirect('cmd.php?act=PageMng');
         break;
     case 'PageMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'PagePst':
+        $zbp->csrfExpiration = 48;
         CheckIsRefererValid();
         PostPage();
         $zbp->BuildModule();
         $zbp->SaveCache();
         $zbp->SetHint('good');
-        Redirect('cmd.php?act=PageMng');
+        echo '<script>localStorage.removeItem("zblogphp_article_" + decodeURIComponent(' . urlencode(GetVars('ID', 'POST')) . '));</script>';
+        RedirectByScript('cmd.php?act=PageMng');
         break;
     case 'CategoryMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'CategoryEdt':
-        Redirect('xiaoyezi/category_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/category_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'CategoryPst':
         CheckIsRefererValid();
@@ -221,16 +227,16 @@ switch ($action) {
         Redirect($_SERVER["HTTP_REFERER"]);
         break;
     case 'CommentMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'MemberMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'MemberEdt':
-        Redirect('xiaoyezi/member_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/member_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'MemberNew':
-        Redirect('xiaoyezi/member_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/member_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'MemberPst':
         CheckIsRefererValid();
@@ -252,7 +258,7 @@ switch ($action) {
             Redirect('cmd.php?act=MemberMng');
         break;
     case 'UploadMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'UploadPst':
         CheckIsRefererValid();
@@ -267,10 +273,10 @@ switch ($action) {
         Redirect('cmd.php?act=UploadMng');
         break;
     case 'TagMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'TagEdt':
-        Redirect('xiaoyezi/tag_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/tag_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'TagPst':
         CheckIsRefererValid();
@@ -294,7 +300,7 @@ switch ($action) {
             $zbp->BuildModule();
             $zbp->SaveCache();
         }
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'PluginDis':
         CheckIsRefererValid();
@@ -328,7 +334,7 @@ switch ($action) {
         if (GetVars('install', 'GET') !== null) {
             $zbp->BuildTemplate();
         }
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'ThemeSet':
         CheckIsRefererValid();
@@ -346,7 +352,7 @@ switch ($action) {
         $zbp->SaveCache();
         break;
     case 'ModuleEdt':
-        Redirect('xiaoyezi/module_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/module_edit.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'ModulePst':
         CheckIsRefererValid();
@@ -365,10 +371,10 @@ switch ($action) {
         Redirect('cmd.php?act=ModuleMng');
         break;
     case 'ModuleMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'SettingMng':
-        Redirect('xiaoyezi/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
+        Redirect('admin/index.php?' . GetVars('QUERY_STRING', 'SERVER'));
         break;
     case 'SettingSav':
         CheckIsRefererValid();

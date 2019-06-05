@@ -20,7 +20,7 @@ function scansubdir($dir)
              if ( $file != ".." && $file != "." ) {
                  if ( is_dir($dir . "/" . $file) ) {
                      $f= scandir($dir . "/" . $file);
-                     $files[$file] = preg_grep("/(.*).gif|png|webp|jpg$/",$f);
+                     $files[$file] = preg_grep("/(.*).gif|png|jpg$/",$f);
                      foreach($files[$file] as $name => $value) 
                         if (UEDITOR_IS_WINDOWS)
                             $files[$file][$name] = iconv('GBK', 'UTF-8', $value);

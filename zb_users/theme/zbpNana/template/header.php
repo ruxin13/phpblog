@@ -32,7 +32,7 @@
 <div class="tixing"><strong>温馨提示：感谢您访问本站，经检测您使用的浏览器为IE浏览器，为了获得更好的浏览体验，请使用Chrome、Firefox或其他浏览器。</strong>
 </div>
 <![endif]-->
-<link rel="stylesheet" id="font-awesome-four-css" href="{$host}zb_users/theme/{$theme}/fonts/font-awesome.min.css" type='text/css' media='all'/>
+<link rel="stylesheet" id="font-awesome-four-css" href="{$host}zb_users/theme/{$theme}/fonts/fontawesome-all.css" type='text/css' media='all'/>
 {$header}
 {if $type=='index'&&$page=='1'}
 	<link rel="alternate" type="application/rss+xml" href="{$feedurl}" title="{$name}" />
