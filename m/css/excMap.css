@@ -1,0 +1,150 @@
+
+.excMapiF{
+	position: absolute;
+	width: 100%;
+	height: 75%;
+	border: none;
+	z-index: 99;
+	overflow: auto;
+}
+.Nav_Header{
+	position: fixed;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	background-color: white;
+	box-shadow: 3px 6px 5px #ccc;
+}
+.Nav_ret{
+	display: inline-block;
+	text-align: center;
+	width: 18%;
+	height: 35px;
+	font-size: 13px;
+	color: #333;
+}
+.Nav_nav{
+	position: absolute;
+	margin: auto;
+	left: 18%;
+	right: 18%;
+	max-width: 250px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #333;
+}
+.Jump{
+	position: absolute;
+	width: 30%;
+	margin: auto;
+	left: 19%;
+	right: 0;
+	top: -46px;
+	bottom: 0;
+}
+
+a{
+	list-style-type: none;
+}
+
+
+.excMap_cnt {
+	position: absolute;
+	width: 100%;
+	height: 25%;
+	bottom: 0;
+	z-index: 0;
+	text-align: center;
+}
+
+.excMapTxt {
+	margin-right: 10%;
+}
+
+.excMap_cnt_head {
+	padding-top: 3%;
+}
+
+.excMap_cnt_head_p {
+	font-size: 1.8rem;
+	color: #EF473A;
+}
+
+.excMap_cnt_head_p2 {
+	padding-top: 1%;
+	font-size: 0.7rem;
+	color: #666;
+}
+
+.excMap_cnt_footer {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.excMap_cnt_footer_left {
+	float: left;
+	width: 50%;
+	height: 100%;
+	padding: 1%;
+}
+
+.excMap_cnt_footer_left1{
+	float: none !important;
+	width: 100% !important;
+}
+
+.excMap_cnt_footer_left span {
+	font-size: 0.8rem;
+	margin-top: -1%;
+	color: #666;
+}
+
+.excMap_cnt_footer_left_Bird {
+	position: absolute;
+}
+
+.excMap_cnt_footer_right {
+	float: right;
+	width: 50%;
+	height: 100%;
+	padding: 1%;
+	border-left: 1px solid #666;
+}
+
+.excMap_cnt_footer_right1 {
+	width:100%;
+	float:none;
+	border:none;
+}
+
+.excMap_cnt_footer_right span {
+	color: #666;
+	font-size: 0.8rem;
+	margin-top: -1%;
+}
+
+.excMap_cnt_footer_right_Bird {
+	position: absolute;
+
+}
+.NewPhone{
+    font-size: 12px!important;
+
+}
+@media screen and (max-width: 321px) {
+	.excMap_cnt_footer_left {
+		float: left;
+		width: 49%;
+		height: 100%;
+		padding: 1%;
+		font-size: 12px;
+	}
+	.excMap_cnt_footer_right {
+		float: right;
+		width: 50%;
+		height: 100%;
+		padding: 1%;
+		border-left: 1px solid #666;
+	}
+}

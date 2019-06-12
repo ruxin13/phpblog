@@ -24,8 +24,11 @@ $(function(){
 		upp_fname = upp_fname_str.split(","),
 		upp_fsize = upp_fsize_str.split(","),
 		upp_fctrl = upp_fctrl_str.split(","),
-		fnex_arr = ['jpg','jpeg','JPG','gif','png','webp','bmp','ico'];
+		fnex_arr = ['jpg','jpeg','JPG','gif','png','webp','bmp','ico','jpg-thumb','jpeg-thumb','JPG-thumb','gif-thumb','png-thumb','webp-thumb','bmp-thumb','ico-thumb'];
     for (var i=0; i < upp_flink.length-1; i++){
+      if (upp_flink[i]) {
+        upp_flink[i] = upp_flink[i].replace(/-md/g, "-thumb");
+			}
     	var ftarr = upp_flink[i].split("."),
     		ftstr = ftarr[ftarr.length-1],
     		fsize = (upp_fsize[i]/1024).toFixed(2)+"KB",

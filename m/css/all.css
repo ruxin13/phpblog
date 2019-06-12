@@ -1,0 +1,98 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+
+ul li {
+	list-style-type: none;
+}
+
+a {
+	/*list-style-type: none;*/
+	outline: none;
+	box-shadow: none;
+}
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:active{text-decoration:none;}
+
+body{
+	overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+	/*background-color: #DDDDDD;*/
+}
+@font-face {
+    font-family: 'iconfont';  /* project id 263094 */
+    src: url('https://at.alicdn.com/t/font_lrihyx4wahouhaor.eot');
+    src: url('https://at.alicdn.com/t/font_lrihyx4wahouhaor.eot?#iefix') format('embedded-opentype'),
+    url('https://at.alicdn.com/t/font_lrihyx4wahouhaor.woff') format('woff'),
+    url('https://at.alicdn.com/t/font_lrihyx4wahouhaor.ttf') format('truetype'),
+    url('https://at.alicdn.com/t/font_lrihyx4wahouhaor.svg#iconfont') format('svg');
+}
+.iconfont {
+    font-family:"iconfont" !important; 
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/*加载动画*/
+.LoadIngBox{
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background:white;
+    z-index: 1000;
+}
+.PageLoadBox {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+    width: 120px;
+    text-align: center;
+}
+.PageLoadBox p{
+    color: #aaa;
+    padding-top: 1em;
+    font-size: .8em;
+}
+.LoadBox{
+    position: relative;
+    width: 7.5em;
+    height: 7.5em;
+    text-align: center;
+
+
+}
+#LoadCanvas{
+    position: absolute;
+    left: 0;
+}
+.loadImg{
+    position: absolute;
+    width: 6.25em;
+    height: 6.25em;
+
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.loadImg img{
+    width: 100%;
+    height: 100%;
+}
